@@ -1,0 +1,15 @@
+/*-------------------------------------------------------------------------------------------------------
+	Nutshell responsive styling. This stylesheet affects both the frontend and backend.
+-------------------------------------------------------------------------------------------------------*/
+#nuts-navbar .nav-collapse {
+	border-bottom: none !important;
+}
+#nuts-navbar .dropdown-menu li > a:hover, 
+#nuts-navbar .dropdown-menu li > a:focus, 
+#nuts-navbar .dropdown-submenu:hover > a {
+	border-bottom: none !important;
+}
+
+/*.row-fluid .thumbnails .row-fluid [class*="span"]:first-child {
+	margin-left: 20px !important;
+}*/
