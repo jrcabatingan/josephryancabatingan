@@ -194,6 +194,7 @@ function optionsframework_options() {
 						
 	$options[] = array( "name" => "Other Settings",
 						"type" => "heading");
+	
 
 	$options[] = array( "name" => "Slider carousel on homepage",
 						"desc" => "Display the bootstrap slider carousel on homepage page template. This uses the wordpress featured images.",
@@ -231,7 +232,137 @@ function optionsframework_options() {
 						"id" => "wpbs_css",
 						"std" => "",
 						"type" => "textarea");
-									
+	
+	$options[] = array( "name" => "API",
+						"type" => "heading");
+	
+	$options[] = array( "name" => "SEOmoz",
+						"desc" => "Your SEOmoz API details",
+						"id" => "seomoz",
+						"type" => "info");
+
+	$options[] = array( "name" => "Username",
+						"desc" => "Your SEOmoz username",
+						"id" => "seomoz_api_username",
+						"std" => "",
+						"type" => "text");	
+
+	$options[] = array( "name" => "Password",
+						"desc" => "Your SEOmoz password",
+						"id" => "seomoz_api_password",
+						"std" => "",
+						"type" => "password");	
+
+	$options[] = array( "name" => "Access Key",
+						"desc" => "Your SEOmoz API access key",
+						"id" => "seomoz_api_access_key",
+						"std" => "",
+						"type" => "text");
+	
+	$options[] = array( "name" => "Secret Key",
+						"desc" => "Your SEOmoz API secret key",
+						"id" => "seomoz_api_secret_key",
+						"std" => "",
+						"type" => "text");
+	
+	$options[] = array( "name" => "BrightLocal",
+						"desc" => "Your BrightLocal API details",
+						"id" => "brightlocal",
+						"type" => "info");
+
+	$options[] = array( "name" => "Username",
+						"desc" => "Your BrightLocal username",
+						"id" => "brightlocal_api_username",
+						"std" => "",
+						"type" => "text");	
+
+	$options[] = array( "name" => "Password",
+						"desc" => "Your BrightLocal password",
+						"id" => "brightlocal_api_password",
+						"std" => "",
+						"type" => "password");	
+
+	$options[] = array( "name" => "Access Key",
+						"desc" => "Your BrightLocal API access key",
+						"id" => "brightlocal_api_access_key",
+						"std" => "",
+						"type" => "text");
+	
+	$options[] = array( "name" => "Secret Key",
+						"desc" => "Your BrightLocal API secret key",
+						"id" => "brightlocal_api_secret_key",
+						"std" => "",
+						"type" => "text");
+
+	$options[] = array( "name" => "Ahrefs.com",
+						"desc" => "Your Ahrefs.com API details",
+						"id" => "ahrefscom",
+						"type" => "info");
+
+	$options[] = array( "name" => "Username",
+						"desc" => "Your Ahrefs.com username",
+						"id" => "ahrefscom_api_username",
+						"std" => "",
+						"type" => "text");	
+
+	$options[] = array( "name" => "Password",
+						"desc" => "Your Ahrefs.com password",
+						"id" => "ahrefscom_api_password",
+						"std" => "",
+						"type" => "password");	
+
+	$options[] = array( "name" => "Ahrefs.com Key",
+						"desc" => "Your Ahrefs.com API key",
+						"id" => "ahrefscom_api_key",
+						"std" => "",
+						"type" => "text");
+	
+	$options[] = array( "name" => "Social Mention",
+						"desc" => "Your Social Mention API details",
+						"id" => "socialmention",
+						"type" => "info");
+
+	$options[] = array( "name" => "API Key",
+						"desc" => "Your Social Mention API key",
+						"id" => "socialmention_api_key",
+						"std" => "",
+						"type" => "text");	
+
+	$options[] = array( "name" => "Google Analytics",
+						"desc" => "Your Google Analytics API details",
+						"id" => "googleanalytics",
+						"type" => "info");
+
+	$options[] = array( "name" => "Data Integrate",
+						"desc" => "Your Google Analytics data",
+						"id" => "googleanalytics_api_data",
+						"std" => "",
+						"type" => "textarea");	
+
+	$options[] = array( "name" => "Twilio",
+						"desc" => "Your Twilio API details",
+						"id" => "twilio",
+						"type" => "info");
+
+	$options[] = array( "name" => "Username",
+						"desc" => "Your Twilio username",
+						"id" => "twilio_api_username",
+						"std" => "",
+						"type" => "text");	
+
+	$options[] = array( "name" => "Password",
+						"desc" => "Your Twilio password",
+						"id" => "twilio_api_password",
+						"std" => "",
+						"type" => "password");	
+
+	$options[] = array( "name" => "Ahrefs Key",
+						"desc" => "Your Twilio Ahrefs API key",
+						"id" => "twilio_ahrefs_api_key",
+						"std" => "",
+						"type" => "text");
+
+
 	return $options;
 }
 
