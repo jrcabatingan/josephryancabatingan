@@ -62,10 +62,6 @@ body.admin-bar .navbar-fixed-top{
 	font-weight: bold !important;
 }
 
-.customize-support #nuts-navbar{
-	background-image:linear-gradient(to bottom, #0088CC, #0044CC) !important;
-}
-
 .nav-container{
 	padding-left: 0;
 	padding-right: 0;

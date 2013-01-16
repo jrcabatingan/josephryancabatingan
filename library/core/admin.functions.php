@@ -48,22 +48,12 @@ function nuts_campaign_post_type() {
 	register_post_type('nutshell-campaigns',$args);
 }
 add_action('init', 'nuts_campaign_post_type');
+?>
 
-function nutshell_add_custom_box(){
-	add_meta_box(
-	        'nutshell_post_details',
-        	__( 'Campaign Details', 'nutshell_text_content' ), 
-	        'nutshell_list_fields',
-        	'nutshell-campaigns'
-	);
-	remove_meta_box('postcustom', 'nutshell-campaigns', 'normal');
-}
+<?php
+$prefix = 'nuts_';
 
-function nutshell_list_fields( $post ) {
-
-  wp_nonce_field( plugin_basename( __FILE__ ), 'myplugin_noncename' );
-
-  $countrylist=array(
+$countrylist=array(
 					array("AF","Afghanistan"),
 					array("AL","Albania"),
 					array("DZ","Algeria"),
@@ -312,36 +302,63 @@ function nutshell_list_fields( $post ) {
 					array("ZW","Zimbabwe"),				
   );
 
-  $nutshell_website = get_post_meta( $post->ID,"nuts_campaign_website",true);
-  $nutshell_country = get_post_meta( $post->ID,"nuts_campaign_country",true);
-  $nutshell_keywords = get_post_meta( $post->ID,"nuts_campaign_keywords",true);
-  echo '<table><tr><td width="30%"><label for="nutshell_field_label">';
-       _e("Website : ", 'nutshell_text_content' );
-  echo '</label></td>';
-  echo '<td><input type="text" id="nuts_campaign_website" name="nuts_campaign_website" placeholder="http://" value="'.$nutshell_website.'" size="25" /></div>';
-  echo '</td></tr><tr><td><label for="nutshell_field_label">';
-       _e("Country : ", 'nutshell_text_content' );
-  echo '</label></td>';
-  echo '<td><select id="nuts_campaign_country" name="nuts_campaign_country">
-	  <option value="">Select Country</option>';
+$metacountry=array();
+foreach($countrylist as $nutscountry):
+	array_push($metacountry,"{$nutscountry[1]}");
+endforeach;
 
-  foreach($countrylist as $country):
-	echo '<option value="'.$country[0].'" '.(($country[0]==$nutshell_country)?'selected="selected"':'').'" >'.$country[1].'</option>';
-  endforeach;
+global $meta_boxes;
 
-  echo '  </select></td></tr>';
-  echo '<tr><td valign="top"><label for="nutshell_field_label">';
-       _e("Keywords : ", 'nutshell_text_content' );
-  echo '</label></td> ';
-  echo '<td><textarea id="nuts_campaign_keywords" rows="7" cols="49" name="nuts_campaign_keywords" placeholder="Add one keyword per line">'.$nutshell_keywords.'</textarea></td></tr></table>';
+$meta_boxes = array();
+
+$meta_boxes[] = array(
+	'id' => 'standard',
+
+	'title' => 'Campaign Details',
+
+	'pages' => array('nutshell-campaigns'),
+
+	'context' => 'normal',
+
+	'priority' => 'high',
+
+	'fields' => array(
+		array(
+			'name'  => 'Website',
+			'id'    => "{$prefix}website",
+			'desc'  => 'Enter your website URL here.',
+			'type'  => 'text',
+			'std'   => 'http://',
+		),
+		array(
+			'name'     => 'Country',
+			'id'       => "{$prefix}country",
+			'type'     => 'select',
+			'options'  => $metacountry,
+			'multiple' => false,
+		),
+		array(
+			'name' => 'Keywords',
+			'desc' => 'Enter one keyword per line',
+			'id'   => "{$prefix}keyword",
+			'type' => 'textarea',
+			'cols' => '20',
+			'rows' => '3',
+		),
+	),
+);
+
+
+function nuts_register_meta_boxes()
+{
+	if ( !class_exists( 'RW_Meta_Box' ) )
+		return;
+
+	global $meta_boxes;
+	foreach ( $meta_boxes as $meta_box )
+	{
+		new RW_Meta_Box( $meta_box );
+	}
 }
+add_action( 'admin_init', 'nuts_register_meta_boxes' );
 
-add_action( 'add_meta_boxes', 'nutshell_add_custom_box' );
-add_action( 'save_post', 'nutshell_save_meta' );
-
-function nutshell_save_meta($post_id){
-	update_post_meta($post_id,"nuts_campaign_website",$_REQUEST["nuts_campaign_website"]);
-	update_post_meta($post_id,"nuts_campaign_country",$_REQUEST["nuts_campaign_country"]);
-	update_post_meta($post_id,"nuts_campaign_keywords",$_REQUEST["nuts_campaign_keywords"]);
-}
-?>

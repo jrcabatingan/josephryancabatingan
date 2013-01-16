@@ -11,7 +11,7 @@ $ahrefs = new Nuts_Ahrefs_API();
 		$ahrefs->request('www.searchcreatively.com'),
 		$ahrefs->urlRequest
 	);*/
-$sc = array(
+/*$sc = array(
 	array(
 		'country' => 'USA',
 		'search-engine' => 'yahoo',
@@ -45,7 +45,7 @@ $brightlocal = new Nuts_Brightlocal_API(1800);
 	);*/
 	echo '<pre>';
 	print_r($brightlocal->batch_request_rankings($sc));
-	echo '</pre>';
+	echo '</pre>';*/
 ?>
 <div class="dashboard row-fluid btm-spc">
 	<div class="pull-left span4"><h4>Welcome Back, Mark!</h4></div><!-- Welcome text -->

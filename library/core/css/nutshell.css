@@ -84,4 +84,8 @@ input[type="color"],
     text-align: center;
 }
 
-
+.current_page_item a,
+.active a,
+.current-menu-item a{ 
+    background-color:#005DAE !important;
+}
